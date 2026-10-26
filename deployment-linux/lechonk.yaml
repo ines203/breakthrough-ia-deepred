@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: lechonkai
+  name: lechonkai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: lechonkai
+  template:
+    metadata:
+      labels:
+        io.kompose.service: lechonkai
+    spec:
+      containers:
+        - image: thezaal/5dd-lechonk-ai:latest
+          name: lechonkai
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: lechonkai
+  name: lechonkai
+spec: 
+  type: ClusterIP
+  ports:
+    - name: "8080"
+      port: 8080
+      targetPort: 8080
+  selector:
+    io.kompose.service: lechonkai

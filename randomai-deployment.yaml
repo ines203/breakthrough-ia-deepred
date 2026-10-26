@@ -1,0 +1,25 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: randomai
+  name: randomai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: randomai
+  template:
+    metadata:
+      labels:
+        io.kompose.service: randomai
+    spec:
+      containers:
+        - image: breakthrough_randomai-image
+          name: randomai
+          imagePullPolicy: Never 
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
