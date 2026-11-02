@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: deepred-gateway
+  name: deepred-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: deepred-gateway
+  template:
+    metadata:
+      labels:
+        io.kompose.service: deepred-gateway
+    spec:
+      containers:
+        - image: cyrjunior/deepred-gateway:latest
+          name: deepred-gateway
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: deepred-gateway
+  name: deepred-gateway
+spec:
+  type: ClusterIP
+  ports:
+    - name: "8080"
+      port: 8080
+      targetPort: 8080
+  selector:
+    io.kompose.service: deepred-gateway
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: deepred-engine
+  name: deepred-engine
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      io.kompose.service: deepred-engine
+  template:
+    metadata:
+      labels:
+        io.kompose.service: deepred-engine
+    spec:
+      containers:
+        - image: cyrjunior/deepred-engine:latest
+          name: deepred-engine
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: deepred-engine
+  name: deepred-engine
+spec:
+  type: ClusterIP
+  ports:
+    - name: "8080"
+      port: 8080
+      targetPort: 8080
+  selector:
+    io.kompose.service: deepred-engine
