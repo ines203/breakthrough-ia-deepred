@@ -9,6 +9,12 @@ public class Move {
     public Move() {
     }
 
+    public Move(Point source, Point target)
+    {
+        this.source = source;
+        this.target = target;
+    }
+
     public Point getSource() {
         return source;
     }
