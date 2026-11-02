@@ -1,9 +1,10 @@
-package com.kleblanc.LeCHONKai.model.message;
+package deepRed.model;
 
-import com.kleblanc.LeCHONKai.model.Move;
-
+import deepRed.model.Board;
+import deepRed.model.Move;
 import java.util.ArrayList;
+import java.util.List;
 
 // Pour le board, un pion blanc est 1, un pion noir est 2
-// X est la première dimension (largeur), Y est la deuxième (hauteur)
-public record MoveRequestMessage(int activeColor, int timeLimit, int[][] board, ArrayList<Move> legalMoves) { }
+// timelimit is in millisSeconds
+public record MoveRequestMessage(int activeColor, int timeLimit, Board board, List<Move> legalMoves) { }

@@ -2,6 +2,7 @@ package deepRed.service;
 
 import deepRed.model.Board;
 import deepRed.model.Move;
+import deepRed.service.evaluationService;
 
 public class minMaxService 
 {

@@ -1,5 +1,5 @@
-package com.kleblanc.LeCHONKai.model.message;
+package deepRed.model;
 
-import com.kleblanc.LeCHONKai.model.Move;
+import deepRed.model.Move;
 
-public record MoveResponseMessage(String aiId, Move move) {}
+public record MoveResponseMessage(Move move, int score, int depth) {}
