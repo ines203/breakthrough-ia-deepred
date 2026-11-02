@@ -7,6 +7,12 @@ public class Point {
     public Point() {
     }
 
+    public Point(int newX, int newY)
+    {
+        x = newX;
+        y = newY;
+    }
+
     public int getX() {
         return x;
     }
