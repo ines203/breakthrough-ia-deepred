@@ -6,14 +6,14 @@ import java.util.List;
 import deepRed.model.Move;
 
 public class Board {
-    private byte[][] board = new byte[8][8];;
+    private int[][] board = new int[8][8];;
 
     public Board() {
     }
 
-    public byte[][] getBoard() 
+    public int[][] getBoard() 
     {
-        byte[][] copy = new byte[8][8];
+        int[][] copy = new int[8][8];
 
         for (int i = 0; i < 8; i++) 
         {
@@ -22,7 +22,7 @@ public class Board {
         return copy;
     }
 
-    public void setBoard(byte[][] newBoard) 
+    public void setBoard(int[][] newBoard) 
     {
         if (newBoard.length != 8) 
         {
@@ -39,12 +39,12 @@ public class Board {
         }
     }
 
-    public void setPoint(Point point, byte value)
+    public void setPoint(Point point, int value)
     {
         board[point.getX()][point.getY()] =  value;
     }
 
-    public byte getPoint(Point point) 
+    public int getPoint(Point point) 
     {
         return board[point.getX()][point.getY()];
     }
@@ -52,7 +52,7 @@ public class Board {
     // This doesn't check if the move is legal
     public void applyMove(Move move)
     {
-        byte valueMoved = board­[move.getSource().getX()][move.getSource().getY()];
+        int valueMoved = board­[move.getSource().getX()][move.getSource().getY()];
 
         if (valueMoved == 0)
             throw new IllegalArgumentException("Source position is empty");
@@ -61,14 +61,14 @@ public class Board {
         board­[move.getTarget().getX()][move.getTarget().getY()] = valueMoved;
     }
 
-    public List<Move> getLegalMoves(byte activeColor)
+    public List<Move> getLegalMoves(int activeColor)
     {
         if (activeColor != 1 && activeColor != 2)
             throw new IllegalArgumentException("Invalid player color");
 
         List<Move> legalMoves = new ArrayList<>();
         int direction = (activeColor == 1) ? -1 : 1;
-        byte opponentColor = (activeColor == 1) ? (byte) 2 : (byte) 1;
+        int opponentColor = (activeColor == 1) ? (int) 2 : (int) 1;
 
         for (int x = 0; x < 8; x++) 
         {
