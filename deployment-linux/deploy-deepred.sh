@@ -1,6 +1,6 @@
 #!/bin/bash
 # =====================================================================
-# Deploiement de l'IA DeepRed (equipe groupe-2) - TP3 420-5DD
+# Deploiement de l'IA DeepRed 
 # Deploie SEULEMENT notre IA : deepred-gateway + deepred-engine
 # Prerequis : le backend du tournoi tourne deja dans le cluster
 # Usage : bash deploy-deepred.sh   (depuis le dossier deployment-linux)
