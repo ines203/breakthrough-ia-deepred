@@ -1,10 +1,10 @@
-package deepRed.deepred_engine.service;
+package main.java.deepRed.deepred_engine.service;
 
 import deepRed.deepred_engine.model.Requête;
 import deepRed.deepred_engine.model.Réponse;
+
 import deepRed.deepred_engine.model.Board;
 import deepRed.deepred_engine.model.Move;
-
 import java.util.List;
 
 public class handleMovesService
