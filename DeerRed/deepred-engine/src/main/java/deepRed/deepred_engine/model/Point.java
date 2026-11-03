@@ -1,4 +1,4 @@
-package deepRed.model;
+package deepRed.deepred_engine.model;
 
 public class Point {
     private int x;

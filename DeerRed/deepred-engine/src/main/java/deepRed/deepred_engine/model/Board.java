@@ -1,9 +1,9 @@
-package deepRed.model;
+package deepRed.deepred_engine.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import deepRed.model.Move;
+import deepRed.deepred_engine.model.Move;
 
 public class Board {
     private int[][] board = new int[8][8];;

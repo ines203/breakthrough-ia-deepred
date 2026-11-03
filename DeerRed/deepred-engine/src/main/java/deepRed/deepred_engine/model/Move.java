@@ -1,6 +1,6 @@
-package deepRed.model;
+package deepRed.deepred_engine.model;
 
-import deepRed.model.Point;
+import deepRed.deepred_engine.model.Point;
 
 public class Move {
     private Point source;
