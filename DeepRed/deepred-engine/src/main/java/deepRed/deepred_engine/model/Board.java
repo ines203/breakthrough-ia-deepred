@@ -5,6 +5,20 @@ import java.util.List;
 
 import deepRed.deepred_engine.model.Move;
 
+/*
+  01234567 Y
+
+0 22222222
+1 20222222
+2 00200000
+3 00000000
+4 00000000
+5 00000000
+6 11111111
+7 11111111
+X
+ */
+
 public class Board {
     private int[][] board = new int[8][8];;
 
@@ -47,6 +61,13 @@ public class Board {
     public int getPoint(Point point) 
     {
         return board[point.getX()][point.getY()];
+    }
+
+    public int getPoint(int x, int y) 
+    {
+        if (x < 0 || x > 7 || y < 0 || y > 7)
+            return 0;
+        return board[x][y];
     }
 
     // This doesn't check if the move is legal
