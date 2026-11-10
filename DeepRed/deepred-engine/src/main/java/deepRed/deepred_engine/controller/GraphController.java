@@ -25,7 +25,10 @@ public class GraphController {
     {
         if (!request.isValid())
         {
-            return new Réponse();
+            return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body("Unable to get request");
+            //return new Réponse();
         }
         return handleMoves(request);
     }

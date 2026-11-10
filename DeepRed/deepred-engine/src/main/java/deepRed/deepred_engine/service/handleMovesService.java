@@ -11,16 +11,13 @@ public class handleMovesService
 {
     public static Réponse handleMoves(Requête request)
     {
-        long deadline = System.nanoTime()
-            + request.timeLimit() * 1_000_000L;
-
         int aiColor = request.activeColor();
         int opponent = aiColor == 1 ? 2 : 1;
 
         Board board = new Board();
         board.setBoard(request.board());
 
-        List<Move> legalMoves = request.legalMoves();
+        List<Move> legalMoves = request.moves();
 
         if (legalMoves == null || legalMoves.isEmpty()) {
             throw new IllegalArgumentException("No legal moves provided");
@@ -32,7 +29,7 @@ public class handleMovesService
 
         for (int depth = 1; ; depth++) {
 
-            if (System.nanoTime() >= deadline) {
+            if (System.currentTimeMillis() >= request.deadlineMs()) {
                 break;
             }
 
@@ -42,7 +39,7 @@ public class handleMovesService
 
             for (Move move : legalMoves) {
 
-                if (System.nanoTime() >= deadline) {
+                if (System.currentTimeMillis() >= request.deadlineMs()) {
                     timedOut = true;
                     break;
                 }
